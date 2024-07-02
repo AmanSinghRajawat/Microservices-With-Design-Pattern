@@ -1,0 +1,15 @@
+package com.userservice.entities;
+
+public class Users {
+	
+	private long userid;
+	private String username;
+	private String email;
+	private String city;
+	
+	
+	
+	
+	
+
+}

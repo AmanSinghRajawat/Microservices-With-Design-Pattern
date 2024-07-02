@@ -1,0 +1,47 @@
+package com.userservice.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.userservice.entities.Users;
+import com.userservice.services.UserServices;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserServices userServices;
+	
+	@GetMapping("/test")
+	public String test() {
+		return "Hello Users.";
+	}
+	
+	@PostMapping("/adduser")
+	public Users addUser(@RequestBody Users u) {
+		return userServices.addUser(u);
+	}
+	
+	@GetMapping("/users")
+	public ResponseEntity<List<Users>> getAllUsers(){
+		List<Users> users = userServices.getAllUsers();
+		return ResponseEntity.ok(users);
+	}
+	
+	
+	@GetMapping("/userid/{userid}")
+	public ResponseEntity<Users> getUserById(@PathVariable long userid) {
+		Users user = userServices.findUserById(userid);
+		return ResponseEntity.ok(user);
+	}
+	
+
+}

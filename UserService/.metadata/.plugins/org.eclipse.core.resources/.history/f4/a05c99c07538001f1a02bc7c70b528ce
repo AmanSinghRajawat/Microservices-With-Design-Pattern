@@ -1,0 +1,9 @@
+package com.userservice.entities;
+
+public class Rating {
+	
+	private long ratingId;
+	private long userId;
+	private long restaurantId;
+
+}

@@ -1,0 +1,24 @@
+package com.userservice.servicesImpl;
+
+import com.userservice.entities.Users;
+import com.userservice.repositories.UserRepository;
+import com.userservice.services.UserServices;
+
+public class UserServiceImpl implements UserServices {
+
+	UserRepository userRepository;
+		
+	public UserServiceImpl(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
+
+
+	@Override
+	public Users addUser(Users u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

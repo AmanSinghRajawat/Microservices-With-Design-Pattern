@@ -1,0 +1,9 @@
+package com.userservice.services;
+
+import com.userservice.entities.Users;
+
+public interface UserServices {
+	
+	Users addUser(Users u);
+	
+}

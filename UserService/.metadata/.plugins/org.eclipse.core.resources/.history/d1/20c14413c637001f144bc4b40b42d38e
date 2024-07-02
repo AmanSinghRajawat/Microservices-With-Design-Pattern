@@ -1,0 +1,9 @@
+package com.userservice.payloads;
+
+public class APIResponse {
+
+	private String message;
+	private boolean status;
+	
+	
+}

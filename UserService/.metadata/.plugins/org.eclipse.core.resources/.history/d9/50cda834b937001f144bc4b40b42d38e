@@ -1,0 +1,20 @@
+package com.userservice.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Users {
+	
+	@Id
+	private long userid;
+	private String username;
+	private String email;
+	private String city;
+	
+	
+	
+	
+	
+
+}

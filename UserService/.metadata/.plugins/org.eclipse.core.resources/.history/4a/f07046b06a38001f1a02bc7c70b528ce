@@ -1,0 +1,15 @@
+package com.userservice.exceptions;
+
+import org.springframework.http.ResponseEntity;
+
+import com.userservice.payloads.APIResponse;
+
+public class GlobalExceptionHandler {
+	
+	public ResponseEntity<APIResponse> ResourceNotFoundExcepptionHandler(ResourceNotFoundException ex){
+		String message = ex.getMessage();
+		APIResponse response = APIResponse.builder().message(message).success(true).build();
+		return response;
+	}
+
+}

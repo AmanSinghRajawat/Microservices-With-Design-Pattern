@@ -1,0 +1,7 @@
+package com.userservice.exceptions;
+
+public class ResourceNotFoundException extends RuntimeException{
+	public ResourceNotFoundException() {
+		super("Resource not found exception.");
+	}
+}
