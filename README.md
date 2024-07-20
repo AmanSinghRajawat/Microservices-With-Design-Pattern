@@ -21,6 +21,7 @@ JPA
 MySQL 
 Spring Web
 Eureka Client
+OpenFeign (in UserService only - for Communication)
 
 DATABASE We Used :
 
