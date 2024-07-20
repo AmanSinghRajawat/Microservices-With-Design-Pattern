@@ -15,6 +15,18 @@ Dependency We Used for Eureka Service :
 
 Eureka Server.
 
++ application.yml of Eureka Server
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
++ END OF application.yml file.
+
 Dependency We Used for all three Services :
 
 JPA

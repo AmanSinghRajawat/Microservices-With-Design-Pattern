@@ -44,6 +44,5 @@ public class RestaurantController {
 //	public List<Restaurants> getRestaurantByRatingId(@PathVariable long ratingId){
 //		return restaurantService.findRestaurantsByRatingId(ratingId);
 //	}
-//	
-	
+
 }
