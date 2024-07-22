@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: CONFIG-PROD-PROFILE
+
+
+    
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
