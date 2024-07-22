@@ -12,4 +12,9 @@ public interface RestaurantService {
 	
 	Restaurants addRestaurant(Restaurants restaurants);
 	
+	// update Restaurant
+	Restaurants updateRestaurant(long restaurantId, Restaurants restaurants);
+	
+	// delete Restaurant
+	String deleteRestaurants(long restaurantId);
 }

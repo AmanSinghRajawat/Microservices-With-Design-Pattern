@@ -2,6 +2,7 @@ package com.ratings.services;
 
 import java.util.List;
 
+
 import com.ratings.entities.Ratings;
 
 public interface RatingsService {
@@ -15,5 +16,13 @@ public interface RatingsService {
 	List<Ratings> findRatingsByUserId(long userId);
 	
 	List<Ratings> findRatingsByRestaurantId(long restaurantId);
+	
+	
+	//update rating
+	Ratings updateRating(long ratingId, Ratings ratings);
+	
+	//delete rating
+	void deleteRating(long ratingId);
+	
 
 }

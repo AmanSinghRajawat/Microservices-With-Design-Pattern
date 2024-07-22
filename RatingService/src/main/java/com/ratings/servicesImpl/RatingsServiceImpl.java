@@ -1,9 +1,9 @@
 package com.ratings.servicesImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.ratings.entities.Ratings;
@@ -47,6 +47,42 @@ public class RatingsServiceImpl implements RatingsService {
 	public List<Ratings> findRatingsByRestaurantId(long restaurantId) {
 		// TODO Auto-generated method stub
 		return ratingsRepositories.findByRestaurantId(restaurantId);
+	}
+
+	@Override
+	public Ratings updateRating(long ratingId, Ratings ratings) {
+		// TODO Auto-generated method stub
+		Optional<Ratings> rating = ratingsRepositories.findById(ratingId);
+		
+		if(rating.isPresent()) {
+			
+			Ratings ratingObj = rating.get();
+			
+			if(ratings.getFeedback().length() > 0) {
+				ratingObj.setFeedback(ratings.getFeedback());
+			}
+			if(ratings.getRatings() > 0){
+				ratingObj.setRatings(ratings.getRatings());
+			}
+			if(ratings.getRestaurantId() > 0) {
+				ratingObj.setRestaurantId(ratings.getRestaurantId());
+			}
+
+			if(ratings.getUserId() > 0) {
+				ratingObj.setUserId(ratings.getUserId());
+			}
+			
+			ratingsRepositories.save(ratingObj);
+			return ratingObj;
+		}
+		
+		return rating.get();
+	}
+
+	@Override
+	public void deleteRating(long ratingId) {
+		// TODO Auto-generated method stub
+		ratingsRepositories.deleteById(ratingId);
 	}
 
 }

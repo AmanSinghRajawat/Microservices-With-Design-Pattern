@@ -1,7 +1,7 @@
 # DurgeshMicroservices
 
 ```diff
-This is the Microservices based Java SpringBoot project.
+This is the Microservices based CRUD Java SpringBoot project.
 In this project we are developing the Restaurant Feedback Application.
 
 User can give ratings and feedback to the number of Restaurants.
@@ -10,6 +10,8 @@ In this project we have created Three Services and One Eureka Server to register
 1. User Service
 2. Restaurant Service
 3. Rating Service
+
+We can update the Ratings and Restaurants Service using User Service API.
 
 Dependency We Used for Eureka Service :
 

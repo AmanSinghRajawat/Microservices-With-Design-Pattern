@@ -1,6 +1,8 @@
 package com.userservice.entities;
 
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,14 +11,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Ratings {
-	
+
 	private long ratingId;
-	private long restaurantId;
 	private long userId;
+	private long restaurantId;
 	private String feedback;
 	private double ratings;
-	
-	private Restaurants restaurants;
+
+	@Transient
+	Restaurants restaurants;
 
 }
