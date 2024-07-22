@@ -17,10 +17,10 @@ import feign.RequestLine;
 @FeignClient(name = "RESTAURANTSERVICE")
 public interface RestaurantService {
 
-	@GetMapping("/restaurantid/{restaurantId}")
+	@GetMapping("/restaurants/restaurantid/{restaurantId}")
 	Restaurants getRestaurant(@PathVariable long restaurantId);
 	
-	@PostMapping("/addrestaurant")
+	@PostMapping("/restaurants/addrestaurant")
 	public Restaurants addRestaurant(@RequestBody Restaurants restaurants);
 	
 	// PutMapping

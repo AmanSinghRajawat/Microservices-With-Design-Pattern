@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.userservice.entities.Ratings;
 
@@ -19,7 +20,7 @@ public interface RatingService {
 	List<Ratings> getRatings(@PathVariable long userId);
 
 	// 	PostMapping
-	@PostMapping("/addratings")
+	@PostMapping("/ratings/addratings")
 	Ratings createRating(@RequestBody Ratings ratings);
 	
 	// PutMapping
