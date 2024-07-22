@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +25,7 @@ import com.userservice.services.UserServices;
 import jakarta.websocket.server.PathParam;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 	
 	@Autowired
@@ -47,7 +49,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(user);
 	}
 	
-	@GetMapping("/users")
+	@GetMapping("")
 	public ResponseEntity<List<Users>> getAllUsers(){
 		List<Users> users = userServices.getAllUsers();
 		return ResponseEntity.ok(users);
@@ -61,13 +63,13 @@ public class UserController {
 	
 	
 	// update user
-	@PutMapping("/users/updateuser/userid/{userId}")
+	@PutMapping("/updateuser/userid/{userId}")
 	public Users updateUser(@PathVariable long userId, @RequestBody Users users) {
 		return userServices.updateUser(userId, users);
 	}
 	
 	// delete user
-	@DeleteMapping("/users/deleteuser/userid/{userId}")
+	@DeleteMapping("/deleteuser/userid/{userId}")
 	public String deleteUser(@PathVariable long userId) {
 		return userServices.deleteUser(userId);
 	}
@@ -76,17 +78,17 @@ public class UserController {
 	
 	// Rating Service
 
-	@PostMapping("/users/addratings")
+	@PostMapping("/addratings")
 	public Ratings addRating(@RequestBody Ratings ratings) {
 		return ratingService.createRating(ratings);
 	}
 	
-	@PutMapping("/users/updateratings/ratingid/{ratingId}")
+	@PutMapping("/updateratings/ratingid/{ratingId}")
 	public Ratings updateRatings(@PathVariable long ratingId, @RequestBody Ratings ratings) {		
 		return ratingService.updateRatings(ratingId, ratings);
 	}
 
-	@DeleteMapping("/users/deleteratings/ratingid/{ratingId}")
+	@DeleteMapping("/deleteratings/ratingid/{ratingId}")
 	public void deleteRatings(@PathVariable long ratingId) {
 		ratingService.deleteRatings(ratingId);
 	}
@@ -94,17 +96,17 @@ public class UserController {
 	
 	// Restaurant Service
 	
-	@PostMapping("/users/addrestaurant")
+	@PostMapping("/addrestaurant")
 	public Restaurants addRestaurant(@RequestBody Restaurants restaurants) {
 		return restaurantService.addRestaurant(restaurants);
 	}
 	
-	@PutMapping("/users/updaterestaurant/restaurantid/{restaurantId}")
+	@PutMapping("/updaterestaurant/restaurantid/{restaurantId}")
 	public Restaurants updateRestaurant(@PathVariable long restaurantId, @RequestBody Restaurants restaurants) {
 		return restaurantService.updateRestaurant(restaurantId, restaurants);
 	}
 	
-	@DeleteMapping("/users/deleterestaurant/restaurantid/{restaurantId}")
+	@DeleteMapping("/deleterestaurant/restaurantid/{restaurantId}")
 	public String deleteRestaurant(@PathVariable long restaurantId) {
 		return restaurantService.deleteRestaurant(restaurantId);
 	}

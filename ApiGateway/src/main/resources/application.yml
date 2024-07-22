@@ -1,0 +1,36 @@
+# Configuration File, Here we configure all the services
+
+server:
+  port: 8084
+  
+spring:
+  application:
+    name: API-GATEWAY
+    
+    
+# below is the configuration of services
+    
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: USERSERVICE
+          uri: lb://USERSERVICE
+          predicates:
+          - Path=/users/**
+#          - Path=/users/**,/secondpath/**,/thirdpath/**    configure multiple url's    Path=/** is used for all [routes all the incoming request here].
+
+
+#[Recommended] always use the proper url's for ex  Path=/http://localhost/users/userid/222
+ 
+
+          
+        - id: RATINGSERVICE
+          uri: lb://RATINGSERVICE
+          predicates:
+          - Path=/ratings/**
+          
+        - id: RESTAURANTSERVICE
+          uri: lb://RESTAURANTSERVICE
+          predicates:
+          - Path=/restaurants/**,/staffs/**

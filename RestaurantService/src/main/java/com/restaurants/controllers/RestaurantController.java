@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurants.entities.Restaurants;
 import com.restaurants.services.RestaurantService;
 
 @RestController
+@RequestMapping("/restaurants")
 public class RestaurantController {
 	
 	@Autowired
@@ -37,7 +39,7 @@ public class RestaurantController {
 		return restaurantService.getRestaurantById(restaurantId);
 	}
 	
-	@GetMapping("/restaurants")
+	@GetMapping("")
 	public List<Restaurants> getAllRestaurants(){
 		return restaurantService.getAllRestaurants();
 	}
@@ -45,7 +47,7 @@ public class RestaurantController {
 	
 	// update restaurant
 	
-	@PutMapping("/restaurants/updaterestaurant/restaurantid/{restaurantId}")
+	@PutMapping("/updaterestaurant/restaurantid/{restaurantId}")
 	public Restaurants updateRestaurant(@PathVariable long restaurantId, @RequestBody Restaurants restaurants) {
 		return restaurantService.updateRestaurant(restaurantId, restaurants);
 	}
@@ -53,7 +55,7 @@ public class RestaurantController {
 	
 	// delete restaurant
 	
-	@DeleteMapping("/restaurants/deleterestaurant/restaurantid/{restaurantId}")
+	@DeleteMapping("/deleterestaurant/restaurantid/{restaurantId}")
 	public String deleteRestaurant(@PathVariable long restaurantId) {
 		return restaurantService.deleteRestaurants(restaurantId);
 	}

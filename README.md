@@ -1,7 +1,45 @@
 # DurgeshMicroservices
 
+
+
+```
+Config Server
+
+In Config Server we host our configuration files over the server, Here we are using Git as a server, We put all the configuration files in Github & used directly from there.
+
++ always put common configuration in configuration files. all the common properties which are applicable to all the services.
+
+Earlier we were hosting Configuration files Locally.
+
+- It provides Client-Server architecture.
+
+STEPS
+
+1. Create a github repository contains all the configuration files.
+2. Create Configuration Service with the dependencies mention below.
+    2.1 Eureka Discovery Client
+    2.2 Config Server
+3. @EnableConfigServer   -    on Main class
+4. Good to go.
+
+
+Now Lets Implement Config Client. [User Service]
+
+- add the config client dependency in the service in which you want to implement CONFIG CLIENT.
+- Go to application.yml file and type 'spring.config.import.optional: configserver:http://localhost/8085' or 'spring.config.import= configserver:http://localhost/8085' // config server url.
+- spring.profiles.active: profileName this is used to change the profile.
+- Done!.
+
+
+
+```
+
+
+
+
+
 ```diff
-This is the Microservices based CRUD Java SpringBoot project.
+This is the Microservices based Java SpringBoot project.
 In this project we are developing the Restaurant Feedback Application.
 
 User can give ratings and feedback to the number of Restaurants.
@@ -10,6 +48,7 @@ In this project we have created Three Services and One Eureka Server to register
 1. User Service
 2. Restaurant Service
 3. Rating Service
+4. Api Gateway
 
 We can update the Ratings and Restaurants Service using User Service API.
 
@@ -34,93 +73,5 @@ We have created durgeshratingservice SCHEMA for Rating User Service.
 
 We have created durgeshrestaurantservice SCHEMA for Restaurant Service.
 
-
-```
-
-#### User Service
-
-```diff
-
-In User Service we used given application.yml file.
-
-+ application.yml file
-
-server:
-  port: 8081
-  
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/durgeshuserservice
-    username: root
-    password: root
-  application:
-    name: USER-SERVICE
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-
-+ // END of application.yml file.
-
-```
-
-#### Rating Service
-
-```diff
-
-In Rating Service we used given application.yml file.
-
-+ application.yml file
-
-server:
-  port: 8083
-  
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/durgeshratingservice
-    username: root
-    password: root
-  application:
-    name: RATING-SERVICE
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-+ // END of application.yml file.
-
-```
-
-#### Restaurant Service
-
-```diff
-
-In Restaurant Service we used given application.yml file.
-
-+ application.yml file
-
-server:
-  port: 8082
-  
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/durgeshrestaurantservice
-    username: root
-    password: root
-  application:
-    name: RESTAURANT-SERVICE
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-+ // END of application.yml file.
 
 ```

@@ -14,3 +14,19 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQLDialect
+    
+    
+#   Here we are telling from where we have to fetch the configuration files in this case we create the config server, So giving configserver url. Our Config server calls the configuration files
+#  Client   ---talks---->  configsever  ---talks----> Configuration files [github files]
+   
+  config:
+    import: configserver:http://localhost:8085
+    
+    
+    
+#  Here we are declaring the profiles. which configuration file you want to use for this service.
+    
+    
+#  profiles:
+#    active:
+#    - dev

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ratings.entities.Ratings;
@@ -18,6 +19,7 @@ import com.ratings.services.RatingsService;
 
 
 @RestController
+@RequestMapping("/ratings")
 public class RatingsController {
 
 	@Autowired
@@ -38,21 +40,21 @@ public class RatingsController {
 		return ratingsService.findById(ratingId);
 	}
 
-	@GetMapping("/ratings")
+	@GetMapping("")
 	public List<Ratings> getAllRatings() {
 		return ratingsService.getAllRatings();
 	}
 
 	
 	// Update Rating
-	@PutMapping("/ratings/updateratings/ratingid/{ratingId}")
+	@PutMapping("/updateratings/ratingid/{ratingId}")
 	public Ratings updateRatings(@PathVariable long ratingId, @RequestBody Ratings rating){
 		return ratingsService.updateRating(ratingId, rating);
 	}
 	
 	
 	// Delete Rating
-	@DeleteMapping("/ratings/deleteratings/ratingid/{ratingId}")
+	@DeleteMapping("/deleteratings/ratingid/{ratingId}")
 	public void deleteRatings(@PathVariable long ratingId) {
 		ratingsService.deleteRating(ratingId);
 	}
@@ -60,12 +62,12 @@ public class RatingsController {
 	
 	
 	
-	@GetMapping("/ratings/userid/{userId}")
+	@GetMapping("/userid/{userId}")
 	public List<Ratings> getRatingsByUserId(@PathVariable long userId){
 		return ratingsService.findRatingsByUserId(userId);
 	}
 
-	@GetMapping("/ratings/restaurantid/{restaurantId}")
+	@GetMapping("/restaurantid/{restaurantId}")
 	public List<Ratings> getRatingsByRestaurantId(@PathVariable long restaurantId){
 		return ratingsService.findRatingsByRestaurantId(restaurantId);
 	}
