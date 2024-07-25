@@ -5,7 +5,7 @@ eureka:
 
 
 
-
+# Circuit Breaker Configuration STARTs.
 
 management:
   endpoints.web.exposure.include:
@@ -24,3 +24,5 @@ resilience4j.circuitbreaker:
       waitDurationInOpenState: 5s
       failureRateThreshold: 50
       eventConsumerBufferSize: 10
+      
+# Circuit Breaker Configuration END here.
