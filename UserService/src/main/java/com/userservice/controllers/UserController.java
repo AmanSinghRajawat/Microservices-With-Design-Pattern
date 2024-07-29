@@ -22,6 +22,9 @@ import com.userservice.fiegnclient.RatingService;
 import com.userservice.fiegnclient.RestaurantService;
 import com.userservice.services.UserServices;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.websocket.server.PathParam;
 
 @RestController
@@ -55,10 +58,22 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 	
+	// Implementing Circuit Breaker Design Pattern in Below Method.	
 	
 	@GetMapping("/userid/{userId}")
+//	@CircuitBreaker(name = "ratingRestaurantBreaker", fallbackMethod = "ratingRestaurantFallBack")
+//	@Retry(name = "ratingRestaurantRetry", fallbackMethod = "ratingRestaurantFallBack")
+	@RateLimiter (name = "ratingRestaurantRateLimiter", fallbackMethod = "ratingRestaurantFallBack")
 	public Users getUserById(@PathVariable long userId) {
 		return userServices.findById(userId);
+	}
+	
+	// ratingRestaurantFallBack Fall Back Method.
+	
+	public Users ratingRestaurantFallBack(long userId, Exception ex) {
+		System.out.println("Exception thrown by Retry ratingRestaurantFallBack Method : "+ex.getMessage());
+		Users user = new Users(12345,"dummyUser","fallbackUser@g.c","gwalior");
+		return user;
 	}
 	
 	

@@ -50,11 +50,39 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
+		<!--    1st step Dependencies  -    API Gateway        -->
+		<!--	1st step Dependency END HERE		-->
+
+		<!--    2nd step Dependencies  -  Config Server        -->
+
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+
+		<!--		2nd step Dependency END HERE		-->
+
+
+		<!--    3rd step Dependencies  -  Actuator        -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+		</dependency>
+
+
+		<!--		3rd step Dependency END HERE		-->
 
 
 		<dependency>

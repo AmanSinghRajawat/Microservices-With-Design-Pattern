@@ -34,3 +34,29 @@ spring:
           uri: lb://RESTAURANTSERVICE
           predicates:
           - Path=/restaurants/**,/staffs/**
+          
+          
+          
+          
+          
+# Okta Configuration
+
+# Issuer & Audience  - Go to Security Section  ->  API ->  default ->  issuer  [copy & paste here]
+# Client ID & Client Secret - Go to Application ->  yourApplicationName ->  Client ID
+
+
+okta:
+  oauth2:
+    issuer: https://dev-91270710.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oaiksqpb6JihXdcb5d7
+    client-secret: LoYlFp96EcKBAeYaJ0Afi9ykXlBvw4G9fpN-tQKPfCS2QIdM7zfOLc5dXjD-Cxlw
+    scopes: internal, openid, email, profile,  offline_access # these scopes will be consider from okta when request is coming.
+    
+
+
+          
+          
+          
+          
+          

@@ -34,5 +34,68 @@ spring:
 #    active:
 #    - dev
 
+
+
+
+
+# Circuit Breaker Design Pattern Configurations.
+
+# Actuator Configuration.
+
+management:
+  endpoints.web.exposure.include:
+    - '*'                                        # you can use 'health'.
+  endpoint.health.show-details: always    
+  health.circuitbreakers.enabled: true          # enables circuit breaker in health.
+
     
     
+    
+# Circuit Breaker Configuration.
+
+# I put all the common configuration [default configuration] on application.yml file of ConfigServer's github file.
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      ratingRestaurantBreaker:         # Circuit Breaker Method Name.
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50        # failure rate > 50, state will be changed from CLOSED to OPEN state.
+        minimumNumberOfCalls: 5        # [100]      # minimum number of calls [100].
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s   # [60000 ms] # wait duration in OPEN state.
+        permittedNumberOfCallsInHalfOpenState: 3   # [10]  # move from half_open to open & closed state.
+        slidingWindowSize: 10    # [100]
+        slidingWindowType: COUNT_BASED    # [COUNT_BASED] # time based or count based sliding window.
+        
+        
+        
+        
+        
+        
+# Retry Design Patter Configuration.
+
+
+  retry:
+    instances:
+      ratingRestaurantRetry:
+        maxAttempts: 3
+        waitDuration: 5s
+        
+        
+        
+# RateLimiter Design Patter Configuration.
+
+
+  ratelimiter:
+    instances:
+      ratingRestaurantRateLimiter:
+        limitRefreshPeriod: 4s
+        limitForPeriod: 2
+        timeoutDuration: 0s
+        
+        
+        
+        
+        

@@ -29,9 +29,21 @@ public class Users {
 	@Transient
 	private List<Ratings> ratings = new ArrayList<>();
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Users [userid=" + userId + ", username=" + username + ", email=" + email + ", city=" + city + "]";
+	}
+
+
+
+	public Users(long userId, String username, String email, String city) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.email = email;
+		this.city = city;
 	}
 	
 	
