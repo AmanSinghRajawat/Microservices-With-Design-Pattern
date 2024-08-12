@@ -1,4 +1,4 @@
-# Microservices Design Patter.
+# Microservices Design Pattern.
 
 ```diff
 This is the Microservices based Java SpringBoot project.
