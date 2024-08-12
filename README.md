@@ -1,4 +1,4 @@
-# DurgeshMicroservices
+# Microservices Design Patter.
 
 ```diff
 This is the Microservices based Java SpringBoot project.
